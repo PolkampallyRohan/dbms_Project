@@ -2,12 +2,12 @@
         
         *Pages*: Welcome page
                  Login/Signp Page
-                 Places/Cities/Tourist_locations
-                 Trip Booking
+                 Home
                  Transit tickets/Hotel reservations
+                 customer info
                  Confirmation
                  Payment
-                 Trip planner
+                 Mybookings
                  Help center
         *Features*: 
                  Trip planner 
@@ -16,13 +16,34 @@
 
 **Database**: Mysql
       
-        *Tables*: Customerdata: storing the data of account holders       
-                  CustomerPreferences: The preferences of the customers 
-                  Transitmode: the various means of transport available to that place     
-                  Transit_companies: various entities providing transit and their fares 
-                  Cities 
-                  Hotels
-                  Places_to_visit
+        *Tables*: Signupdata: storing the data of account holders 
+                       ->firstname
+                       ->lastname
+                       ->username/email_id
+                       ->password
+                       ->DOB
+                       ->mobile_no
+                  businfo: 
+                       ->cities
+                       ->busno
+                       ->busno
+                  hotels:
+                       ->city
+                       ->areaname
+                       ->accomodation
+                       ->fare
+                       ->hotelname
+                       ->cousine_type
+                       ->rating
+                       
+                  traveller_info:
+                       ->firstname
+                       ->lastname
+                       ->mailid
+                       ->phone_no
+                       ->age
+                       
+                  confirmation: all details entered by the customer required to display his already booked trips
                   
 **Overview**: 
         --> We chose to create a website which brings all the aspects of travelling ( i.e; ticket booking ,hotel reservation, trip planner ) to one place so               that it makes travelling/planning easy.
