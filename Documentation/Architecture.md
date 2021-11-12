@@ -27,6 +27,20 @@
                        ->cities
                        ->busno
                        ->busno
+                       ->departuretime
+                       ->arrivaltime
+                  flightinfo: 
+                       ->cities
+                       ->busno
+                       ->busno
+                       ->departuretime
+                       ->arrivaltime 
+                  traininfo: 
+                       ->cities
+                       ->busno
+                       ->busno
+                       ->departuretime
+                       ->arrivaltime
                   hotels:
                        ->city
                        ->areaname
