@@ -16,30 +16,30 @@
 
 **Database**: Mysql
       
-        *Tables*: admin: storing the data of account holders 
-                       ->firstname
-                       ->lastname
-                       ->username/email_id
+        *Tables*: admin: Storing the data of admins 
+                       ->aid
+                       ->name
                        ->password
-                       ->DOB
-                       ->mobile_no
-                  customers: 
-                       ->cities
-                       ->busno
-                       ->busno
-                       ->departuretime
-                       ->arrivaltime
-                  booking: 
+                  customers: Storing information of customers
+                       ->id
+                       ->name
+                       ->email
+                       ->contact
+                       ->password
+                  bookings: Storing the booking status and details
                        ->id
                        ->email
                        ->package
                        ->members
                        ->amount
-                  holiday: 
+                       ->date
+                       ->status
+                       ->journey
+                  holiday: Storing the information of holiday packages
                        ->id
                        ->name
                        ->amount
                   
 **Overview**: 
-        --> We chose to create a website which brings all the aspects of travelling ( i.e; ticket booking ,hotel reservation, trip planner ) to one place so               that it makes travelling/planning easy.
-            
+        --> we created a travel management website which provides an interface to book holiday packages 
+            and manage the user bookings and updating the holiday packages (admin perks)
