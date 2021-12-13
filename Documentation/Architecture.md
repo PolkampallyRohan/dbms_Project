@@ -1,63 +1,44 @@
-**Frontend**: HTML/CSS/JavaScript
+**Frontend**: HTML/CSS
         
-        *Pages*: Welcome page
-                 Login/Signp Page
-                 Home
-                 Transit tickets/Hotel reservations
-                 customer info
-                 Confirmation
-                 Payment
-                 Mybookings
-                 Help center
-        *Features*: 
-                 Trip planner 
+        *Pages*: login page
+                 user login page
+                 order booking page
+                 admin
+                 admin_home(ahome)
+                 changepassword_admin
+                 changepassword_user
+                 newRegistration(newreg)
+                 holiday package management page
+                 user order management page
+                 
     
 **Backend**: PHP / Database connectivity with php
 
 **Database**: Mysql
       
-        *Tables*: Signupdata: storing the data of account holders 
+        *Tables*: admin: storing the data of account holders 
                        ->firstname
                        ->lastname
                        ->username/email_id
                        ->password
                        ->DOB
                        ->mobile_no
-                  businfo: 
+                  customers: 
                        ->cities
                        ->busno
                        ->busno
                        ->departuretime
                        ->arrivaltime
-                  flightinfo: 
-                       ->cities
-                       ->busno
-                       ->busno
-                       ->departuretime
-                       ->arrivaltime 
-                  traininfo: 
-                       ->cities
-                       ->busno
-                       ->busno
-                       ->departuretime
-                       ->arrivaltime
-                  hotels:
-                       ->city
-                       ->areaname
-                       ->accomodation
-                       ->fare
-                       ->hotelname
-                       ->cousine_type
-                       ->rating
-                       
-                  traveller_info:
-                       ->firstname
-                       ->lastname
-                       ->mailid
-                       ->phone_no
-                       ->age
-                       
-                  confirmation: all details entered by the customer required to display his already booked trips
+                  booking: 
+                       ->id
+                       ->email
+                       ->package
+                       ->members
+                       ->amount
+                  holiday: 
+                       ->id
+                       ->name
+                       ->amount
                   
 **Overview**: 
         --> We chose to create a website which brings all the aspects of travelling ( i.e; ticket booking ,hotel reservation, trip planner ) to one place so               that it makes travelling/planning easy.
