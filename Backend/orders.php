@@ -19,7 +19,7 @@ $name=$b['name'];
 <title>Tour &amp; Travels System</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
-.styleclass
+.ashu
 {
 	border:1px solid #333;
 	border-collapse:collapse;
@@ -32,7 +32,7 @@ $name=$b['name'];
 
 <body>
 <div id="header">
-  <div align="center"> <span class="headingMain">Online Tours &amp; Travels System</span> </div>
+  <div align="center"> <span class="headingMain">Travellance : Travel management system</span> </div>
 </div>
 <br />
 <br />
@@ -41,14 +41,15 @@ $name=$b['name'];
 
  <span class="subHead">Customers Booking<br /></span><br />
 
-<table border="0" cellpadding="5" cellspacing="5" class="design styleclass">
-<tr class="labels styleclass"><th class="styleclass">Sr.No.</th><th class="styleclass">E-Mail</th><th class="styleclass">Package Name</th>
-<th class="styleclass">Journey By</th>
-<th class="styleclass">Total Amount</th>
-<th class="styleclass">Members</th>
-<th class="styleclass">Date</th>
-<th class="styleclass">Status</th>
-<th class="styleclass">Delete</th></tr>
+<table border="0" cellpadding="5" cellspacing="5" class="design ashu">
+<tr class="labels ashu"><th class="ashu">Sr.No.</th><th class="ashu">E-Mail</th><th class="ashu">Package Name</th>
+<th class="ashu">Journey By</th>
+<th class="ashu">Total Amount</th>
+<th class="ashu">adult_Members</th>
+<th class="ashu">children</th>
+<th class="ashu">Date</th>
+<th class="ashu">Status</th>
+<th class="ashu">Delete</th></tr>
 <?php
 $u=1;
 $x=mysqli_query($al, "SELECT * FROM bookings");
@@ -56,22 +57,25 @@ while($y=mysqli_fetch_array($x))
 {
 	?>
 <tr class="labels">
-<td class="styleclass"><?php echo $u;$u++;?></td>
-<td class="styleclass"><?php echo $y['email'];?></td>
-<td class="styleclass"><?php echo $y['package'];?></td>
-<td class="styleclass"><?php echo $y['journey'];?></td>
-<td class="styleclass"><?php echo "INR ".$y['amount'];?></td>
-<td class="styleclass"><?php echo $y['members'];?></td>
-<td class="styleclass"><?php echo $y['date'];?></td>
+<td class="ashu"><?php echo $u;$u++;?></td>
+<td class="ashu"><?php echo $y['email'];?></td>
+<td class="ashu"><?php echo $y['package'];?></td>
+<td class="ashu"><?php echo $y['journey'];?></td>
+<td class="ashu"><?php echo "INR ".$y['amount'];?></td>
+<td class="ashu"><?php echo $y['adult_members'];?></td>
+<td class="ashu"><?php echo $y['children'];?></td>
+<td class="ashu"><?php echo $y['date'];?></td>
 <?php if($y['status']==0)
 {
 	
-?> <td class="styleclass"><a href="app.php?a=<?php echo $y['id'];?>" class="link">Approve</a></td>
-<?php } else { ?>
-<td class="styleclass">Approved</td>
+?> 
+<td class="ashu"><a href="app.php?a=<?php echo $y['id'];?>" class="link">Approve</a></td>
+<?php } 
+else { ?>
+<td class="ashu">Approved</td>
 <?php }
 ?>
-<td class="styleclass"><a href="deleteH.php?dd=<?php echo $y['id'];?>" class="link">Delete</a></td>
+<td class="ashu"><a href="deleteH.php?dd=<?php echo $y['id'];?>" class="link">Delete</a></td>
 </tr>
 <?php } ?>
 </table>
