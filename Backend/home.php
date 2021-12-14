@@ -21,7 +21,7 @@ $name=$b['name'];
 
 <body>
 <div id="header">
-  <div align="center"> <span class="headingMain">Online Tours &amp; Travels System</span> </div>
+  <div align="center"> <span class="headingMain">Travellance : Travel management system</span> </div>
 </div>
 <br />
 <br />
