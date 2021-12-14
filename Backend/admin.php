@@ -33,7 +33,7 @@ if($_POST['aid']!=NULL && $_POST['pass']!=NULL)
 <body>
 <div id="header">
 <div align="center">
-<span class="headingMain">Online Tours &amp; Travels System</span>
+<span class="headingMain">Travellance : Travel management system</span>
 </div>
 <br />
 </div>
