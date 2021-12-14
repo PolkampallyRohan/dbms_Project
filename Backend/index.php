@@ -9,8 +9,8 @@ $e=mysqli_real_escape_string($al, $_POST['email']);
 $p=mysqli_real_escape_string($al, $_POST['pass']);
 if($_POST['email']!=NULL && $_POST['pass']!=NULL)
 {
-	$pp=sha1($p);
-	$sql=mysqli_query($al, "SELECT * FROM customers WHERE email='$e' AND password='$pp'");
+	
+	$sql=mysqli_query($al, "SELECT * FROM customers WHERE email='$e' AND password='$p'");
 	if(mysqli_num_rows($sql)==1)
 	{
 		$_SESSION['email']=$e;
@@ -47,12 +47,14 @@ if($_POST['email']!=NULL && $_POST['pass']!=NULL)
 <tr><td colspan="2" class="info" align="center"><?php echo $info;?></td></tr>
 <tr><td class="labels">Email ID : </td><td><input type="email" size="25" name="email" class="fields" placeholder="Enter Email ID" required="required" autocomplete="off" /></td></tr>
 <tr><td class="labels">Password : </td><td><input type="password" size="25" name="pass" class="fields" placeholder="Enter Password" required="required" /></td></tr>
+<tr><td colspan="1" align="center"><div class="link forget-pass text-left"><a href="forgotpass_email.php">Forgot password?</a></div></td></tr>
+<tr><td colspan="3" align="center"><div class="link login-link text-center">Not yet a member? <a href="newReg.php">Signup now</a></div></td></tr>
 <tr><td colspan="2" align="center"><input type="submit" value="Login" class="fields" /></td></tr>
+
 </table>
 </form>
 <br />
 <br />
-<a href="newReg.php" class="link">New User Click Here</a>
 <br />
 <a href="admin.php" class="link">Admin Login</a>
 
