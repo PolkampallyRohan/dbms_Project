@@ -16,22 +16,50 @@ $q=mysqli_fetch_array($p);
 $rate=$q['amount'];
 $pack=$q['name'];
 $j=$_POST['j'];
-$m=$_POST['mem'];
+$m1=$_POST['adult_mem'];
+$m2=$_POST['child_mem'];
 $d=$_POST['d'];
 
-$amount=$m*$rate;
-if($id!=NULL && $j!=NULL && $m!=NULL && $d!=NULL)
+if(strcmp($j, "Air")==0)
 {
-	$sql=mysqli_query($al, "INSERT INTO bookings(email,package,members,journey,amount,date,status) VALUES('$email','$pack','$m','$j','$amount','$d','0')");
+	$amount=(($m1*($rate))+($m2*($rate/2)))*3;
+	$sql=mysqli_query($al, "INSERT INTO bookings(email,package,adult_members,children,journey,amount,date,status) VALUES('$email','$pack','$m1','$m2','$j','$amount','$d','0')");
 	if($sql)
 	{
-		$info="Successfully Received Your Booking Info.<br> Total Amount Payable for $m Member(s) is INR $amount";
+		$info="Successfully Received Your Booking Info.<br> Total Amount Payable  is INR $amount";
+	}
+	else
+	{
+		$info="Error Please ";
+	}
+}
+else if(strcmp($j, "Train")==0)
+{
+	$amount=(($m1*($rate))+($m2*($rate/2)))*1.5;
+	$sql=mysqli_query($al, "INSERT INTO bookings(email,package,adult_members,children,journey,amount,date,status) VALUES('$email','$pack','$m1','$m2',$j','$amount','$d','0')");
+	if($sql)
+	{
+		$info="Successfully Received Your Booking Info.<br> Total Amount Payable  is INR $amount";
+	}
+	else
+	{
+		$info="Error Please Try ";
+	}
+}
+else
+{
+	$amount=($m1*($rate))+($m2*($rate/2));
+	$sql=mysqli_query($al, "INSERT INTO bookings(email,package,adult_members,children,journey,amount,date,status) VALUES('$email','$pack','$m1','$m2',$j','$amount','$d','0')");
+	if($sql)
+	{
+		$info="Successfully Received Your Booking Info.<br> Total Amount Payable  is INR $amount";
 	}
 	else
 	{
 		$info="Error Please Try Again";
 	}
 }
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -41,7 +69,7 @@ if($id!=NULL && $j!=NULL && $m!=NULL && $d!=NULL)
 <title>Tour &amp; Travels System</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
-.styleclass
+.ashu
 {
 	border:1px solid #333;
 	border-collapse:collapse;
@@ -53,7 +81,7 @@ if($id!=NULL && $j!=NULL && $m!=NULL && $d!=NULL)
 
 <body>
 <div id="header">
-  <div align="center"> <span class="headingMain">Online Tours &amp; Travels System</span> </div>
+  <div align="center"> <span class="headingMain">Travellance : Travel management system</span> </div>
 </div>
 <br />
 <br />
@@ -72,7 +100,8 @@ if($id!=NULL && $j!=NULL && $m!=NULL && $d!=NULL)
 	 ?>
 <option value="<?php echo $y['id'];?>"><?php echo "INR ".$y['amount']."".$y['name'];?></option>
 <?php } ?>
-</select></td></tr>
+</select>
+</td></tr>
 <tr><td class="labels">Journey By : </td><td>
 <select name="j" class="fields" required>
 <option value="" selected="selected" disabled="disabled">- - Ticket By - -</option>
@@ -81,20 +110,44 @@ if($id!=NULL && $j!=NULL && $m!=NULL && $d!=NULL)
 <option value="Travels(BUS)">Travels(BUS)</option>
 </select>
 </td></tr>
-<tr><td class="labels">Members : </td><td><input type="number" class="fields" size="5" placeholder="Select Members"  required="required" name="mem" /></td></tr>
-<tr><td class="labels">Date : </td><td><input type="date" class="fields" size="10" placeholder="DD/MM/YYY"   required="required" name="d" /></td></tr>
-
+<tr><td class="labels">No of Adults : </td><td><input type="number" class="fields" size="5" placeholder="Select Members"  required="required" name="adult_mem" /></td></tr>
+<tr><td class="labels">No of children(6-17) : </td><td><input type="number" class="fields" size="5" placeholder="Select Members"  required="required" name="child_mem" /></td></tr>
+<tr><td class="labels">Date : </td><td><input type="date" id="demo" class="fields" size="10" placeholder="DD/MM/YYY"   required="required" name="d"  /></td></tr>
+<script>
+      var todayDate = new Date();
+      var month = todayDate.getMonth()+1 
+      var year = todayDate.getUTCFullYear() - 0; 
+      var tdate = todayDate.getDate(); 
+      if(month < 10){
+        month = "0" + month 
+      }
+      if(tdate < 10){
+        tdate = "0" + tdate;
+      }
+      var maxDate = year + "-" + month + "-" + tdate;
+      document.getElementById("demo").setAttribute("min", maxDate);
+      console.log(maxDate);
+</script>
 <tr><td colspan="2" align="center"><input type="submit" value="BOOK NOW" class="fields" /></td></tr>
+<tr><td colspan="2" align="center"><div class="link forget-pass text-left"><a href="">Note: The price shown is for Travels(BUS) </a></div></td></tr>
+<tr><td colspan="2" align="center"><div class="link forget-pass text-left"><a href="">the price for Air and Train bookings is 1.5x and 3x increment in rate respectively </a></div></td></tr>
+<tr><td colspan="2" align="center"><div class="link forget-pass text-left"><a href="">and finally The price is halved for children </a></div></td></tr>
+
+
 </table> 
 </form>
 <br />
 <br />
  <span class="subHead">Current Holiday Packages<br /></span><br />
 
-<table border="0" cellpadding="5" cellspacing="5" class="design styleclass">
-<tr class="labels styleclass"><th class="styleclass">Sr.No.</th><th class="styleclass">Package Name</th>
-<th class="styleclass">Journey By</th><th class="styleclass">Total Amount</th><th class="styleclass">Date</th><th class="styleclass">Status</th>
-<th class="styleclass">Delete</th></tr>
+<table border="0" cellpadding="5" cellspacing="5" class="design ashu">
+<tr class="labels ashu"><th class="ashu">Sr.No.</th><th class="ashu">Package Name</th>
+<th class="ashu">Journey By</th><th class="ashu">Total Amount</th>
+<th class="ashu">Adults</th>
+<th class="ashu">Children</th>
+<th class="ashu">Date</th>
+<th class="ashu">Status</th>
+<th class="ashu">Delete</th></tr>
 <?php
 $u=1;
 $x=mysqli_query($al, "SELECT * FROM bookings WHERE email='$email'");
@@ -102,18 +155,21 @@ while($y=mysqli_fetch_array($x))
 {
 	?>
 <tr class="labels">
-<td class="styleclass"><?php echo $u;$u++;?></td>
-<td class="styleclass"><?php echo $y['package'];?></td>
-<td class="styleclass"><?php echo $y['journey'];?></td>
-<td class="styleclass"><?php echo "INR ".$y['amount'];?></td>
-<td class="styleclass"><?php echo $y['date'];?></td><td class="styleclass"><?php if($y['status']==1){echo "Approved";}else{echo "Pending";}?></td>
+<td class="ashu"><?php echo $u;$u++;?></td>
+<td class="ashu"><?php echo $y['package'];?></td>
+<td class="ashu"><?php echo $y['journey'];?></td>
+<td class="ashu"><?php echo "INR ".$y['amount'];?></td>
+<td class="ashu"><?php echo $y['adult_members'];?></td>
+<td class="ashu"><?php echo $y['children'];?></td>
+<td class="ashu"><?php echo $y['date'];?></td><td class="ashu"><?php if($y['status']==1){echo "Approved";}else{echo "Pending";}?></td>
 
-<td class="styleclass"><a href="deleteH.php?d=<?php echo $y['id'];?>" class="link">Delete</a></td>
+<td class="ashu"><a href="deleteH.php?d=<?php echo $y['id'];?>" class="link">Delete</a></td>
 </tr>
 <?php } ?>
 </table>
 <br />
 <a href="home.php" class="link">HOME</a>
 </div>
+
 </body>
 </html>
